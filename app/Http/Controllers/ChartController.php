@@ -9,14 +9,15 @@ use App\NetProfit;
 class ChartController extends Controller
 {
     public function index() {
-        $fetch_year = $this->fetch_year();
+        // $fetch_year = $this->fetch_year();
+        $fetch_year =  NetProfit::select("year")->groupBy('year')->orderBy('year', 'DESC')->get();
         return view('charts', compact('fetch_year', $fetch_year));
     }
 
-    public function fetch_year() {
-        $data =  NetProfit::select("year")->groupBy('year')->orderBy('year', 'DESC')->get();
-        return $data;
-    }
+    // public function fetch_year() {
+    //     $data =  NetProfit::select("year")->groupBy('year')->orderBy('year', 'DESC')->get();
+    //     return $data;
+    // }
 
     public function fetch_data(Request $request) {
         if($request->input('year'))
