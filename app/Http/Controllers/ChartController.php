@@ -27,7 +27,7 @@ class ChartController extends Controller
          {
          
           $output[] = array(
-           'month'  => $row['month'],
+        //    'month'  => $row['month'],
            'profit' => floatval($row['profit'])
           );
          }
