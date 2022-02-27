@@ -14,19 +14,14 @@ class ChartController extends Controller
     }
 
     public function fetch_year() {
-       //  $data = DB::table('net_profits')->select(DB::raw('year'))->groupBy('year')->orderBy('year', 'DESC')->get();
-   
         $data =  NetProfit::select("year")->groupBy('year')->orderBy('year', 'DESC')->get();
-  
         return $data;
     }
 
     public function fetch_data(Request $request) {
         if($request->input('year'))
         {
-
          $chart_data = $this->fetch_chart_data($request->input('year'));
-   
          foreach($chart_data->toArray() as $row)
          {
          
@@ -41,9 +36,7 @@ class ChartController extends Controller
 
     function fetch_chart_data($year)
     {
-    // $data =  DB::table('net_profits')->orderBy('year', 'ASC')->where('year', $year)->get(); 
      $data =  NetProfit::select("id", "year", "profit", "month")->orderBy('year', 'ASC')->where('year', $year)->get();
-
      return $data;
     }
 }
