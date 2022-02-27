@@ -11,12 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-
-Route::get('charts','ChartController@index');
+Route::get('/','ChartController@index');
 Route::post('chart/fetch_data', 'ChartController@fetch_data');

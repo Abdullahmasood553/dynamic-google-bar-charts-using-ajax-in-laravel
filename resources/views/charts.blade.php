@@ -71,15 +71,6 @@
                 ]);
             }); 
 
-            data.addRows([
-                // ['Mushrooms', 140],
-                // ['Onions', 50],
-                // ['Olives', 30],
-                // ['Zucchini', 20],
-                // ['Pepperoni', 12]
-
-            ]);
-
             // Set chart options
             var options = {
                 // 'title': 'Check Monthly Profit',

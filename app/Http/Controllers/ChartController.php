@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\NetProfit;
 
 class ChartController extends Controller
 {
@@ -13,7 +14,10 @@ class ChartController extends Controller
     }
 
     public function fetch_year() {
-        $data = DB::table('chart_data')->select(DB::raw('year'))->groupBy('year')->orderBy('year', 'DESC')->get();
+       //  $data = DB::table('net_profits')->select(DB::raw('year'))->groupBy('year')->orderBy('year', 'DESC')->get();
+   
+        $data =  NetProfit::select("year")->groupBy('year')->orderBy('year', 'DESC')->get();
+  
         return $data;
     }
 
@@ -25,20 +29,21 @@ class ChartController extends Controller
    
          foreach($chart_data->toArray() as $row)
          {
-       
+         
           $output[] = array(
-           'month'  => $row->month,
-           'profit' => floatval($row->profit)
+           'month'  => $row['month'],
+           'profit' => floatval($row['profit'])
           );
          }
-     
          echo json_encode($output);
         }
     }
 
     function fetch_chart_data($year)
     {
-     $data =  DB::table('chart_data')->orderBy('year', 'ASC')->where('year', $year)->get();
+    // $data =  DB::table('net_profits')->orderBy('year', 'ASC')->where('year', $year)->get(); 
+     $data =  NetProfit::select("id", "year", "profit", "month")->orderBy('year', 'ASC')->where('year', $year)->get();
+
      return $data;
     }
 }
