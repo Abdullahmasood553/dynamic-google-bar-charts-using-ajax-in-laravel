@@ -22,12 +22,9 @@
             <div class="col-md-3">
                 <select name="year" id="year" class="form-control">
                     <option value="">Select Year</option>
-                    @foreach($year_list as $row)
+                    @foreach($fetch_year as $row)
                         <option value="{{$row->year}}">{{$row->year}}</option>
                     @endforeach
-                    {{-- <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option> --}}
                 </select>
             </div>
         </div>

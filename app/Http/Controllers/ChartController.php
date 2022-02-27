@@ -9,8 +9,8 @@ use App\NetProfit;
 class ChartController extends Controller
 {
     public function index() {
-        $data['year_list'] = $this->fetch_year();
-        return view('charts')->with($data);
+        $fetch_year = $this->fetch_year();
+        return view('charts', compact('fetch_year', $fetch_year));
     }
 
     public function fetch_year() {
